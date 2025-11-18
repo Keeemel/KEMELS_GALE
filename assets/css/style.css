@@ -345,17 +345,390 @@ main { margin-top: 0; }
 .section-head h1{ margin:0 0 6px; }
 .muted{ color:#6b7280; }
 
-/* ===== Cartes gérants ===== */
-.cards{ display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
-.card-gerant{
-  background:#fff; border:1px solid rgba(12,59,46,.08); border-radius:16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.05); overflow:hidden; display:flex; flex-direction:column;
+/* ===== PAGE GÉRANTS ===== */
+.page-gerants {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fdfb 0%, #e8f5f0 100%);
+  padding-top: 70px; /* Compense le header fixe */
 }
-.card-gerant__photo{ width:100%; height:180px; object-fit:cover; }
-.card-gerant__body{ padding:14px; display:grid; gap:6px; }
-.card-gerant .role{ color:#0c3b2e; font-weight:600; }
-.card-gerant .email{ color:#455; font-size:.92rem; }
 
+.page-gerants .layout-2col {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr 400px;
+  width: min(1200px, 94vw);
+  margin: 0 auto;
+  padding: 48px 0;
+  align-items: start;
+}
+
+/* Section principale */
+.page-gerants .section-head {
+  margin-bottom: 32px;
+}
+
+.page-gerants .section-head h1 {
+  margin: 0 0 8px 0;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #0c3b2e;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.page-gerants .muted {
+  color: #5a7368;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* Grille de cartes gérants */
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.card-gerant {
+  background: #fff;
+  border: 1px solid rgba(12, 59, 46, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-gerant:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(12, 59, 46, 0.15);
+  border-color: rgba(12, 59, 46, 0.15);
+}
+
+.card-gerant__photo {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+  background: linear-gradient(135deg, #e8f5f0 0%, #d3ebe3 100%);
+}
+
+.card-gerant__body {
+  padding: 20px;
+  display: grid;
+  gap: 8px;
+  flex: 1;
+}
+
+.card-gerant h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #0c3b2e;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.card-gerant .role {
+  color: #2d7a5f;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: rgba(45, 122, 95, 0.08);
+  padding: 4px 12px;
+  border-radius: 12px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.card-gerant .email {
+  color: #5a7368;
+  font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-gerant .email::before {
+  content: "✉";
+  opacity: 0.6;
+}
+
+/* Panneau de connexion (sidebar) */
+.login-panel {
+  position: sticky;
+  top: 90px;
+  background: linear-gradient(145deg, #0c3b2e 0%, #0f4d3b 100%);
+  color: #fff;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px rgba(12, 59, 46, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.login-panel h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-panel .muted {
+  color: #c9e7dc;
+  margin-bottom: 24px;
+}
+
+/* Formulaire dans le panneau */
+.login-panel .auth-form {
+  display: grid;
+  gap: 16px;
+}
+
+.login-panel .field {
+  display: grid;
+  gap: 8px;
+}
+
+.login-panel .field span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e8f5f0;
+}
+
+.login-panel .field input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.login-panel .field input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.login-panel .field input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.login-panel .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0;
+}
+
+.login-panel .checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.login-panel .checkbox span {
+  color: #e8f5f0;
+  font-size: 0.95rem;
+}
+
+.login-panel .btn--full {
+  width: 100%;
+  background: #fff;
+  color: #0c3b2e;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.login-panel .btn--full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive gérants */
+@media (max-width: 1024px) {
+  .page-gerants .layout-2col {
+    grid-template-columns: 1fr;
+  }
+  
+  .login-panel {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== PAGE TABLEAU DE BORD ===== */
+.page-dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fdfb 0%, #e8f5f0 100%);
+  padding-top: 70px; /* Compense le header fixe */
+}
+
+.page-dashboard .container {
+  width: min(1200px, 94vw);
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.page-dashboard .section-head {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.page-dashboard .section-head h1 {
+  margin: 0 0 12px 0;
+  font-size: clamp(32px, 5vw, 48px);
+  color: #0c3b2e;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.page-dashboard .section-head .muted {
+  color: #5a7368;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Grille de cartes dashboard */
+.dash-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 40px;
+}
+
+.dash-card {
+  background: #fff;
+  border: 2px solid rgba(12, 59, 46, 0.08);
+  border-radius: 24px;
+  padding: 32px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 180px;
+}
+
+.dash-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #0c3b2e 0%, #2d7a5f 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.dash-card:hover::before {
+  transform: scaleX(1);
+}
+
+.dash-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(12, 59, 46, 0.15);
+  border-color: rgba(12, 59, 46, 0.15);
+  background: linear-gradient(135deg, #fff 0%, #f8fdfb 100%);
+}
+
+.dash-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0c3b2e;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dash-card h3::before {
+  content: "→";
+  font-size: 1.8rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.dash-card:hover h3::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dash-card p {
+  margin: 0;
+  color: #5a7368;
+  font-size: 1rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* Carte spéciale déconnexion */
+.dash-card:last-child {
+  border-color: rgba(220, 38, 38, 0.1);
+}
+
+.dash-card:last-child:hover {
+  border-color: rgba(220, 38, 38, 0.2);
+  background: linear-gradient(135deg, #fff 0%, #fef2f2 100%);
+}
+
+.dash-card:last-child h3 {
+  color: #dc2626;
+}
+
+.dash-card:last-child::before {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+}
+
+/* Responsive dashboard */
+@media (max-width: 768px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .dash-card {
+    min-height: 140px;
+    padding: 24px;
+  }
+  
+  .page-dashboard .container {
+    padding: 32px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .dash-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .dash-card p {
+    font-size: 0.95rem;
+  }
+}
 /* ===== Panneau connexion (sidebar) ===== */
 .login-panel{
   position: sticky; top: 90px;
@@ -378,3 +751,5 @@ main { margin-top: 0; }
 
 .alert{ padding:10px 12px; border-radius:12px; margin: 8px 0; font-size:.95rem;}
 .alert--error{ background:#5e1f1f; border:1px solid #c95f5f;}
+
+

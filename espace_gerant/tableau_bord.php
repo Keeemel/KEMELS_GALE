@@ -1,4 +1,5 @@
 <?php
+include __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/bdd.php';
 require_once __DIR__ . '/../includes/fonctions.php';
 require_once __DIR__ . '/../includes/authentification.php';
@@ -12,9 +13,11 @@ if ($_SESSION['role'] !== 'gerant' && $_SESSION['role'] !== 'admin') {
   redirect('../connexion.php');
 }
 
-require_once __DIR__ . '/../includes/header.php';
-?>
 
+?>
+<head>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
 <main class="page-dashboard">
   <section class="container">
     <header class="section-head">
