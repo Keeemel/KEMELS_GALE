@@ -1,0 +1,48 @@
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 20px;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+.popup-gerant img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 8px auto;
+}
+
+.popup-gerant h3 {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+}
+
+.page-carte h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.page-carte .muted {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    #map { height: 400px; }
+    .popup-gerant img { width: 60px; height: 60px; }
+    .popup-gerant h3 { font-size: 0.9rem; }
+}
+
+
