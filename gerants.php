@@ -1,10 +1,9 @@
 <?php
+session_start();
 require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/base_donnees/bdd.php';
+require_once __DIR__ . '/includes/bdd.php';
 require_once __DIR__ . '/includes/fonctions.php';
 require_once __DIR__ . '/includes/authentification.php';
-
-session_start();
 
 // Helper simple : retourne la photo si elle existe, sinon default
 function photo_or_default($url) {
@@ -88,7 +87,7 @@ if (is_logged() && !empty($_SESSION['user_id'])) {
           <?php foreach ($gerants as $g): ?>
             <article class="card-gerant">
               <img 
-                src="<?= $g['photo_url'] ?: 'assets/images/gerants/default.jpg' ?>" 
+                src="<?= e($g['photo_url'] ?: 'assets/images/gerants/default.jpg') ?>" 
                 alt="<?= e($g['prenom'] . ' ' . $g['nom']) ?>"
                 class="card-gerant__photo"
                 onerror="this.src='assets/images/gerants/default.jpg'"
@@ -122,7 +121,7 @@ if (is_logged() && !empty($_SESSION['user_id'])) {
       <?php if (is_logged()): ?>
         <div style="text-align: center; padding: 20px 0;">
           <img 
-            src="<?= $currentPhoto ?>" 
+            src="<?= e($currentPhoto) ?>"
             alt="Photo de profil" 
             style="width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:12px;"
             onerror="this.src='assets/images/gerants/default.jpg'"

@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/base_donnees/bdd.php';
+require_once __DIR__ . '/includes/bdd.php';
 require_once __DIR__ . '/includes/fonctions.php';
 require_once __DIR__ . '/includes/authentification.php';
 
@@ -54,8 +54,8 @@ try {
                 attribution: '&copy; OpenStreetMap'
             }).addTo(map);
 
-            const gerants = <?= json_encode($gerants, JSON_HEX_TAG) ?>;
-            const eoliennes = <?= json_encode($eoliennes, JSON_HEX_TAG) ?>;
+            const gerants = <?= json_encode($gerants, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
+            const eoliennes = <?= json_encode($eoliennes, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>;
             const bounds = [];
 
             // Marqueurs gérants
