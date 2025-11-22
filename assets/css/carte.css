@@ -2,12 +2,6 @@
    CARTE.CSS - Styles pour la carte interactive
    ========================================== */
 
-/* Note: Colors below correspond to CSS variables in style.css:
-   #f9f9f9 = --bg-gray-light
-   #333 = --color-text-medium
-   These are kept as hex values here since CSS variables 
-   from style.css are not accessible in this separate file. */
-
 /* ===== Conteneur de la carte ===== */
 #map {
   height: 600px;
@@ -21,42 +15,17 @@
 /* ===== Popup Leaflet personnalisé ===== */
 .leaflet-popup-content-wrapper {
   border-radius: 10px;
-  background-color: #f9f9f9;
+  background-color: var(--bg-gray-light);
   padding: 12px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
 
 .leaflet-popup-tip {
-  background: #f9f9f9;
+  background: var(--bg-gray-light);
 }
 
 /* ===== Contenu des popups ===== */
-.popup-gerant img {
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 8px auto;
-}
-
-.popup-gerant h3 {
-  margin: 0;
-  font-size: 1rem;
-  text-align: center;
-  color: #333;
-  font-weight: 600;
-}
-
-/* Support pour l'ancien sélecteur si utilisé */
-.leaflet-popup-content h3 {
-  margin: 8px 0 0 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
-  text-align: center;
-}
-
+.popup-gerant img,
 .leaflet-popup-content img {
   border-radius: 50%;
   width: 80px;
@@ -64,6 +33,19 @@
   object-fit: cover;
   display: block;
   margin: 0 auto 8px auto;
+}
+
+.popup-gerant h3,
+.leaflet-popup-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  color: var(--color-text-medium);
+  font-weight: 600;
+}
+
+.leaflet-popup-content h3 {
+  margin: 8px 0 0 0;
 }
 
 /* ===== Responsive ===== */
