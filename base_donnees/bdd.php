@@ -84,9 +84,12 @@ if ($check == 0) {
     $pdo->prepare("INSERT INTO user (nom, prenom, email, pass_hash, role)
                    VALUES ('Admin', 'Site', 'admin@kemelgale.fr', :p, 'admin')")
         ->execute([':p' => $hash]);
-
-    echo '<p style="color:lime;font-family:monospace">✅ Base initialisée avec succès.<br>
-          Compte admin : <b>admin@kemelgale.fr</b><br>
-          Mot de passe : <b>admin123</b></p>';
+    
+    // Message de debug (à désactiver en production)
+    if (getenv('DEBUG_MODE') === 'true') {
+        echo '<p style="color:lime;font-family:monospace">✅ Base initialisée avec succès.<br>
+              Compte admin : <b>admin@kemelgale.fr</b><br>
+              Mot de passe : <b>admin123</b></p>';
+    }
 }
 ?>
