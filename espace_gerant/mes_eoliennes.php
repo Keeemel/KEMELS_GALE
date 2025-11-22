@@ -1,11 +1,12 @@
 <?php
+session_start();
 require_once __DIR__ . '/../includes/header.php';
-require_once __DIR__ . '/../base_donnees/bdd.php';
+require_once __DIR__ . '/../includes/bdd.php';
 require_once __DIR__ . '/../includes/fonctions.php';
 require_once __DIR__ . '/../includes/authentification.php';
 
 
-if (!is_logged()) redirect('login.php');
+if (!is_logged()) redirect('../connexion.php');
 
 $uid = $_SESSION['user_id'];
 
@@ -56,7 +57,7 @@ try {
             <td><?= e($e['energie_t_kw']) ?></td>
             <td>
                 <a href="modifier_eolienne.php?id=<?= $e['id'] ?>">Modifier</a> |
-                <a href="supprimer_eolienne.php?id=<?= $e['id'] ?>" onclick="return confirm('Supprimer cette éolienne ?')">Supprimer</a>
+                <a href="supprimer_eolienne.php?id=<?= $e['id'] ?>&csrf=<?= csrf_token() ?>" onclick="return confirm('Supprimer cette éolienne ?')">Supprimer</a>
             </td>
         </tr>
     <?php endforeach; ?>

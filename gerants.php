@@ -1,10 +1,9 @@
 <?php
+session_start();
 require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/base_donnees/bdd.php';
+require_once __DIR__ . '/includes/bdd.php';
 require_once __DIR__ . '/includes/fonctions.php';
 require_once __DIR__ . '/includes/authentification.php';
-
-session_start();
 
 // Helper simple : retourne la photo si elle existe, sinon default
 function photo_or_default($url) {
