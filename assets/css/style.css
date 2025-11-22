@@ -8,6 +8,9 @@
   --color-primary-light: #2d7a5f;
   --color-text-muted: #5a7368;
   --color-text-light: #617a71;
+  --color-text-dark: #222;
+  --color-text-medium: #333;
+  --color-text-gray: #666;
   
   /* Couleurs accent */
   --color-accent: #d3f5e2;
@@ -20,6 +23,7 @@
   --bg-gradient-alt: linear-gradient(180deg, #f0f5f3 0%, #ffffff 60%);
   --bg-card: #fff;
   --bg-dark: #0c3b2e;
+  --bg-gray-light: #f9f9f9;
   
   /* Couleurs formulaires */
   --input-bg: rgba(255, 255, 255, 0.08);
@@ -1100,11 +1104,11 @@ main {
 .page-carte h1 {
   font-size: 2rem;
   margin-bottom: var(--spacing-sm);
-  color: #222;
+  color: var(--color-text-dark);
 }
 
 .page-carte .muted {
-  color: #666;
+  color: var(--color-text-gray);
   margin-bottom: var(--spacing-xl);
 }
 

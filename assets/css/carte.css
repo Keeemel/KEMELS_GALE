@@ -2,6 +2,12 @@
    CARTE.CSS - Styles pour la carte interactive
    ========================================== */
 
+/* Note: Colors below correspond to CSS variables in style.css:
+   #f9f9f9 = --bg-gray-light
+   #333 = --color-text-medium
+   These are kept as hex values here since CSS variables 
+   from style.css are not accessible in this separate file. */
+
 /* ===== Conteneur de la carte ===== */
 #map {
   height: 600px;
@@ -58,18 +64,6 @@
   object-fit: cover;
   display: block;
   margin: 0 auto 8px auto;
-}
-
-/* ===== Styles de la page carte ===== */
-.page-carte h1 {
-  font-size: 2rem;
-  margin-bottom: 8px;
-  color: #222;
-}
-
-.page-carte .muted {
-  color: #666;
-  margin-bottom: 20px;
 }
 
 /* ===== Responsive ===== */
