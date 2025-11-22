@@ -1077,7 +1077,7 @@ main {
 
 .data-card .label {
   display: block;
-  color: #516a60;
+  color: var(--color-text-muted);
   margin-top: 6px;
   font-size: 13px;
 }
@@ -1088,7 +1088,7 @@ main {
   padding: var(--spacing-5xl) 0;
   text-align: center;
   margin-top: var(--spacing-4xl);
-  border-radius: var(--spacing-sm);
+  border-radius: var(--radius-sm);
 }
 
 .desc-final .final-text {
