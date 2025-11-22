@@ -59,10 +59,23 @@ function validate_password_strength(string $password): array {
  */
 function rate_limit(string $action, int $max_attempts = 5, int $time_window = 300): bool {
     if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
+        return true; // Si pas de session, on ne peut pas limiter
     }
     
-    $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    // Récupération de l'IP avec support des proxies
+    $ip = 'unknown';
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        // Prendre la première IP de la liste (client réel)
+        $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+        $ip = trim($ips[0]);
+        // Validation basique de l'IP
+        if (!filter_var($ip, FILTER_VALIDATE_IP)) {
+            $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+        }
+    } else {
+        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+    }
+    
     $key = "rate_limit_{$action}_{$ip}";
     
     if (!isset($_SESSION[$key])) {

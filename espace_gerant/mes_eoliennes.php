@@ -27,6 +27,15 @@ try {
 
 <main>
 <h1>Mes éoliennes</h1>
+
+<?php if ($msg = flash('success')): ?>
+    <div class="alert alert--success"><p><?= e($msg) ?></p></div>
+<?php endif; ?>
+
+<?php if ($msg = flash('error')): ?>
+    <div class="alert alert--error"><p><?= e($msg) ?></p></div>
+<?php endif; ?>
+
 <a href="ajouter_eolienne.php" class="btn">Ajouter une éolienne</a>
 
 <?php if(empty($eoliennes)): ?>

@@ -12,7 +12,7 @@ if (!is_logged()) redirect('../connexion.php');
 
 // Vérification CSRF
 if (!csrf_verify($_GET['csrf'] ?? '')) {
-    flash('success', 'Session expirée. Réessaie.');
+    flash('error', 'Session expirée. Réessaie.');
     redirect('mes_eoliennes.php');
 }
 
