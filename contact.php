@@ -10,7 +10,7 @@ $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification CSRF
     if (!csrf_verify($_POST['csrf'] ?? '')) {
-        $errors[] = "Session expirée. Réessaie.";
+        $errors[] = "Session expirée. Réessayez.";
     } else {
         $nom = trim($_POST['nom'] ?? '');
         $email = trim($_POST['email'] ?? '');

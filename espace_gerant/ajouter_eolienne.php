@@ -19,7 +19,7 @@ $sites = $pdo->query("SELECT id, nom FROM site ORDER BY nom ASC")->fetchAll(PDO:
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Vérification CSRF
     if (!csrf_verify($_POST['csrf'] ?? '')) {
-        $errors[] = "Session expirée. Réessaie.";
+        $errors[] = "Session expirée. Réessayez.";
     } else {
         $site_id = $_POST['site_id'] ?: null;
         $identifiant = trim($_POST['identifiant'] ?? '');

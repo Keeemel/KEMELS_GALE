@@ -14,12 +14,22 @@ try {
         case 'GET':
             // Récupérer toutes les éoliennes ou une éolienne spécifique
             if (isset($_GET['id'])) {
-                $stmt = $pdo->prepare("SELECT * FROM eolienne WHERE id = :id");
+                $stmt = $pdo->prepare("
+                    SELECT id, site_id, identifiant, latitude, longitude, 
+                           capacite_kw, etat, energie_t_kw, gerant_id 
+                    FROM eolienne 
+                    WHERE id = :id
+                ");
                 $stmt->execute([':id' => intval($_GET['id'])]);
                 $eolienne = $stmt->fetch(PDO::FETCH_ASSOC);
                 echo json_encode(['success' => true, 'data' => $eolienne]);
             } else {
-                $stmt = $pdo->query("SELECT * FROM eolienne ORDER BY id DESC");
+                $stmt = $pdo->query("
+                    SELECT id, site_id, identifiant, latitude, longitude, 
+                           capacite_kw, etat, energie_t_kw, gerant_id 
+                    FROM eolienne 
+                    ORDER BY id DESC
+                ");
                 $eoliennes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo json_encode(['success' => true, 'data' => $eoliennes]);
             }
