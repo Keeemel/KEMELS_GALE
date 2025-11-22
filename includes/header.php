@@ -8,9 +8,10 @@
 
   <?php
   // Détecte le chemin relatif vers la racine
-  $depth = substr_count($_SERVER['PHP_SELF'], '/') - 2;
-  $base = str_repeat('../', max(0, $depth));
-  if (empty($base)) $base = './';
+  // Compte les niveaux de profondeur du fichier actuel
+  $script_path = $_SERVER['SCRIPT_NAME'] ?? $_SERVER['PHP_SELF'];
+  $depth = substr_count($script_path, '/') - 1; // -1 pour le / initial
+  $base = $depth > 0 ? str_repeat('../', $depth) : './';
   ?>
 
   <!-- Chemins relatifs dynamiques -->

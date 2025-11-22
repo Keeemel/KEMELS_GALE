@@ -63,9 +63,12 @@ function rate_limit(string $action, int $max_attempts = 5, int $time_window = 30
     }
     
     // Récupération de l'IP avec support des proxies
+    // Note: X-Forwarded-For peut être falsifié. Pour une sécurité maximale,
+    // implémenter une liste blanche de proxies de confiance.
     $ip = 'unknown';
     if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         // Prendre la première IP de la liste (client réel)
+        // Dans un environnement de production, valider contre une liste de proxies connus
         $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
         $ip = trim($ips[0]);
         // Validation basique de l'IP

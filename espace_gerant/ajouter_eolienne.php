@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: mes_eoliennes.php');
                 exit;
             } catch (PDOException $e) {
-                if ($e->getCode() == 23000) {
+                if ($e->getCode() === '23000') {
                     $errors[] = "Cet identifiant existe déjà.";
                 } else {
                     $errors[] = "Erreur lors de l'ajout.";
