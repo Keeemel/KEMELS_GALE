@@ -29,7 +29,7 @@ require_once __DIR__ . '/includes/header.php';
         </div>
 
         <figure class="desc-hero__media" aria-hidden="true">
-          <img src="assets/images/fonds/eoliennes_pano.jpg" alt="Panorama du parc éolien">
+          <img src="assets/images/fonds/eoliennes_pano.png" alt="Panorama du parc éolien">
         </figure>
       </div>
     </div>

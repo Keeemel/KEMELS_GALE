@@ -17,8 +17,7 @@
 
 <header class="main-header">
   <div class="container">
-    <a href="/index.php" class="logo">
-      <img src="/KEMELS_GALE/assets/images/eoliennes/logo2.png" alt="Logo KEMEL’S GALE" class="logo__img">
+    <a href="/index.php" class="logo">      
       <span class="logo__text">KEMEL’S GALE</span>
     </a>
 
