@@ -204,10 +204,6 @@ main { margin-top: 0; }
   opacity: 0.8;
 }
 
-img.hero-video__logo { 
-  max-width: 50;
- }
-
 .hero-video__overlay {
   position: absolute;
   inset: 0;
@@ -226,7 +222,6 @@ img.hero-video__logo {
 
 img.hero-video__logo { 
   max-width: 50%; 
-  margin: 0 auto 20px;
 }
 
 .hero-video__title {
@@ -798,7 +793,17 @@ img.hero-video__logo {
   text-decoration: none;
   transition: color 0.2s;
 }
-.footer-nav a:hover { color: #3ccf8e; }
+.footer-nav a:hover { color: #022716; }
+
+a {
+  color: #3ccf8e;
+  text-decoration: none;
+}
+
+a :hover {
+  color: #15925a;
+  text-decoration: none;
+}
 
 .footer-legal {
   text-align: center;
