@@ -846,3 +846,260 @@ a :hover {
 .dash-card p { color: #5a7368; }
 .dash-card--logout h3 { color: #dc2626; }
 .dash-card--logout:hover { background: #fef2f2; border-color: #fca5a5; }
+
+/* =========================================
+   8. PAGE AUTH / CONNEXION (Ajout)
+   ========================================= */
+.page-auth {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 70px; /* Hauteur header */
+  background: #0c3b2e;
+  overflow: hidden;
+}
+
+/* Arrière-plan */
+.auth-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.auth-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../images/fonds/eoliennes_pano.jpg') center/cover no-repeat;
+  background-color: #0c3b2e; 
+  filter: blur(8px);
+  transform: scale(1.1);
+}
+.auth-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 59, 46, 0.75);
+  z-index: 1;
+}
+
+/* Carte de connexion */
+.auth-card {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  color: #fff;
+  margin: 20px;
+  animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Branding */
+.auth-card__brand {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.auth-card__brand img {
+  height: 64px; /* FIX: Taille du logo contrôlée */
+  width: auto;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.auth-card__brand h1 {
+  font-size: 1.75rem;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+.auth-card__brand p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* Formulaire spécifique */
+.auth-form {
+  display: grid;
+  gap: 20px;
+}
+.auth-form .field {
+  text-align: left;
+}
+.auth-form .field span {
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: 4px;
+}
+.auth-form input:not([type="checkbox"]) {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+}
+.auth-form input:not([type="checkbox"]):focus {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: #3ccf8e;
+}
+.auth-help {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 16px;
+}
+.auth-help a {
+  color: rgba(255, 255, 255, 0.6);
+}
+.auth-help a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* =========================================
+   9. PAGE CONTACT (Corrigé)
+   ========================================= */
+.page-contact {
+  padding-top: 70px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.contact-hero {
+  background: #0c3b2e;
+  color: #fff;
+  padding: 60px 0 80px;
+  text-align: center;
+}
+.contact-hero h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 0 0 16px;
+}
+.contact-hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+  margin-top: -40px;
+  margin-bottom: 80px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border: 1px solid #f0f0f0;
+}
+
+/* Colonne Infos */
+.contact-info h3 {
+  margin-top: 0;
+  color: #0c3b2e;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+}
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.contact-icon {
+  width: 40px; height: 40px;
+  background: #e3f0eb;
+  color: #0c3b2e;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.contact-text strong { display: block; color: #0c3b2e; margin-bottom: 4px; }
+.contact-text p, .contact-text a { margin: 0; color: #5a7368; text-decoration: none; }
+.contact-text a:hover { color: #3ccf8e; }
+
+/* Colonne Formulaire */
+.contact-form {
+  display: grid;
+  gap: 20px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.contact-form .field span {
+  color: #0c3b2e;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* CHAMPS DE SAISIE CORRIGÉS */
+.contact-form input, 
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f8fdfb;
+  color: #0c3b2e; /* Texte foncé obligatoire sur fond clair */
+  transition: all 0.2s;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #3ccf8e;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(60, 207, 142, 0.1);
+}
+.contact-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.contact-btn {
+  background: #0c3b2e;
+  color: #fff;
+  font-size: 1rem;
+  padding: 16px 32px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.contact-btn:hover {
+  background: #062c22;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(12, 59, 46, 0.2);
+}
+
+@media (max-width: 900px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+    box-shadow: none;
+    border: none;
+    padding: 40px 0;
+  }
+  .form-row { grid-template-columns: 1fr; }
+}
