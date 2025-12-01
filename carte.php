@@ -182,15 +182,11 @@ $activeEoliennes = count(array_filter($eoliennes, fn($e) => $e['etat'] !== 'Arr�
                     ? `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2L2 22h20L12 2zm0 3.5L18.5 20H5.5L12 5.5z"/></svg>` // Eclair/Triangle
                     : `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>`; // Warning
 
-                const icon = L.divIcon({
-                    className: 'custom-marker',
-                    html: `
-                        <div class="marker-eolienne ${statusClass}">
-                            <div class="marker-eolienne-inner">${svgIcon}</div>
-                        </div>`,
-                    iconSize: [36, 36],
-                    iconAnchor: [18, 36],
-                    popupAnchor: [0, -40]
+                const icon = L.icon({
+                    iconUrl: 'assets/images/eoliennes/iconEolienne.png', // chemin vers ton fichier
+                    iconSize: [36, 36],      // adapte selon ton image
+                    iconAnchor: [18, 36],    // point de l’image placé sur la coordonnée
+                    popupAnchor: [0, -36]    // position du popup par rapport à l’icône
                 });
 
                 const marker = L.marker([e.latitude, e.longitude], {icon: icon});

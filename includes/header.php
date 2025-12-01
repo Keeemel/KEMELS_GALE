@@ -9,7 +9,7 @@
   <!-- Chemins absolus depuis la racine du site -->
   <link rel="stylesheet" href="/KEMELS_GALE/assets/css/style.css">
   <link rel="stylesheet" href="assets/css/carte.css">
-  <link rel="icon" href="/KEMELS_GALE/assets/images/eoliennes/logo2.png">
+  <link rel="icon" href="/KEMELS_GALE/assets/images/eoliennes/logo.png">
 
 </head>
 
