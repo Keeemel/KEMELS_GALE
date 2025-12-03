@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="contact-icon">📍</div>
                     <div class="contact-text">
                         <strong>Adresse</strong>
-                        <p>Parc Éolien Kemel's Gale<br>123 Route du Vent<br>59000 Lille, France</p>
+                        <p>Parc Éolien Kemel's Gale<br>123 Route du Vent<br>65100 Lourdes, France</p>
                     </div>
                 </div>
 

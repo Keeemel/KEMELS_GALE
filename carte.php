@@ -173,7 +173,7 @@ $activeEoliennes = count(array_filter($eoliennes, fn($e) => $e['etat'] !== 'Arr�
         // --- MARQUEURS ÉOLIENNES ---
         eoliennesData.forEach(e => {
             if(e.latitude && e.longitude) {
-                const isOk = (e.etat !== 'Arrêt' && e.etat !== 'Maintenance');
+                const isOk = (e.etat !== 'STOP' && e.etat !== 'Maintenance');
                 const statusClass = isOk ? 'status-ok' : 'status-nok';
                 const statusText = isOk ? 'En fonctionnement' : e.etat;
                 
