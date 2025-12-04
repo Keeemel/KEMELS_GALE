@@ -9,7 +9,7 @@
   <!-- Chemins absolus depuis la racine du site -->
   <link rel="stylesheet" href="/KEMELS_GALE/assets/css/style.css">
   <link rel="stylesheet" href="assets/css/carte.css">
-  <link rel="icon" href="/KEMELS_GALE/assets/images/eoliennes/logo2.png">
+  <link rel="icon" href="/KEMELS_GALE/assets/images/eoliennes/logo.png">
 
 </head>
 
@@ -17,8 +17,7 @@
 
 <header class="main-header">
   <div class="container">
-    <a href="/index.php" class="logo">
-      <img src="/KEMELS_GALE/assets/images/eoliennes/logo2.png" alt="Logo KEMEL’S GALE" class="logo__img">
+    <a href="/index.php" class="logo">      
       <span class="logo__text">KEMEL’S GALE</span>
     </a>
 

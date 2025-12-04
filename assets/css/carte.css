@@ -1,48 +1,158 @@
-#map {
-    height: 600px;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    margin-top: 20px;
+/* Styles spécifiques à la carte pour correspondre à la DA */
+
+/* Conteneur principal de la carte */
+.map-card {
+    position: relative;
+    /* CORRECTION ICI : On crée un contexte local pour que les enfants (z-index 1000)
+       ne passent pas au-dessus du header du site lors du scroll */
+    z-index: 0; 
+    
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(12, 59, 46, 0.15);
+    border: 4px solid #fff;
+    height: 700px;
+    background: #e8f5f0;
 }
 
-.leaflet-popup-content-wrapper {
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    padding: 12px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+/* Panneau de contrôle flottant */
+.map-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Ce 1000 reste au-dessus de la carte, mais restera contenu dans .map-card grâce au fix ci-dessus */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border: 1px solid rgba(12, 59, 46, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
 }
 
-.popup-gerant img {
+.map-controls h3 {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    color: #5a7368;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0c3b2e;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+.filter-btn:hover { background: rgba(12, 59, 46, 0.05); }
+.filter-btn.active {
+    background: #0c3b2e;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(12, 59, 46, 0.2);
+}
+
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot-green { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+.dot-red { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+.dot-gray { background: #9ca3af; }
+
+/* Marqueurs personnalisés sur la carte */
+.custom-marker {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.custom-marker:hover {
+    transform: scale(1.15) !important;
+    z-index: 1000 !important;
+}
+
+/* Avatar Gérant sur la carte */
+.marker-gerant {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 8px auto;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.marker-gerant::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; right: -2px;
+    width: 16px; height: 16px;
+    background: #0c3b2e;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='10px' height='10px'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.popup-gerant h3 {
-    margin: 0;
-    font-size: 1rem;
+/* Pin Éolienne */
+.marker-eolienne {
+    width: 36px; height: 36px;
+    background: #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg); /* Forme de goutte */
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    border: 2px solid #fff;
+}
+.marker-eolienne-inner {
+    width: 24px; height: 24px;
+    transform: rotate(45deg); /* Redresse l'icône */
+    border-radius: 50%;
+    display: grid; place-items: center;
+}
+.marker-eolienne.status-ok .marker-eolienne-inner { background: #dcfce7; color: #166534; }
+.marker-eolienne.status-nok .marker-eolienne-inner { background: #fee2e2; color: #991b1b; }
+
+/* Popups Leaflet Stylisées */
+.leaflet-popup-content-wrapper {
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.leaflet-popup-content { margin: 0; width: 260px !important; }
+
+.popup-header {
+    background: #0c3b2e;
+    color: #fff;
+    padding: 16px;
     text-align: center;
-    color: #333;
 }
-
-.page-carte h1 {
-    font-size: 2rem;
-    margin-bottom: 8px;
+.popup-header h3 { margin: 0; font-size: 1.1rem; }
+.popup-body { padding: 16px; background: #fff; }
+.popup-stat {
+    display: flex; justify-content: space-between;
+    margin-bottom: 8px; font-size: 0.9rem;
+    border-bottom: 1px solid #f0f0f0; padding-bottom: 8px;
 }
-
-.page-carte .muted {
-    color: #666;
-    margin-bottom: 20px;
+.popup-stat:last-child { border: none; margin: 0; padding: 0; }
+.popup-stat span:first-child { color: #6b7280; }
+.popup-stat span:last-child { font-weight: 600; color: #1f2937; }
+.status-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;
 }
+.status-ok { background: #dcfce7; color: #166534; }
+.status-nok { background: #fee2e2; color: #991b1b; }
 
 @media (max-width: 768px) {
-    #map { height: 400px; }
-    .popup-gerant img { width: 60px; height: 60px; }
-    .popup-gerant h3 { font-size: 0.9rem; }
+    .map-card { height: 500px; }
+    .map-controls { top: auto; bottom: 20px; left: 20px; right: 20px; width: auto; }
 }
-
-
